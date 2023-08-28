@@ -6,7 +6,7 @@ namespace ItemsApi.Services;
 
 public class ItemsService
 {
-    private readonly IMongoCollection<Item> _itemsCollection;
+    private readonly IMongoCollection<Items> _itemsCollection;
 
     public ItemsService(
         IOptions<ItemStoreDatabaseSettings> itemsDatabaseSettings)
@@ -17,20 +17,20 @@ public class ItemsService
         var mongoDatabase = mongoClient.GetDatabase(
             itemsDatabaseSettings.Value.DatabaseName);
 
-        _itemsCollection = mongoDatabase.GetCollection<Item>(
+        _itemsCollection = mongoDatabase.GetCollection<Items>(
             itemsDatabaseSettings.Value.ItemsCollectionName);
     }
 
-    public async Task<List<Item>> GetAsync() =>
+    public async Task<List<Items>> GetAsync() =>
         await _itemsCollection.Find(_ => true).ToListAsync();
 
-    public async Task<Item?> GetAsync(string id) =>
+    public async Task<Items?> GetAsync(string id) =>
         await _itemsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-    public async Task CreateAsync(Item newItem) =>
+    public async Task CreateAsync(Items newItem) =>
         await _itemsCollection.InsertOneAsync(newItem);
 
-    public async Task UpdateAsync(string id, Item updatedItem) =>
+    public async Task UpdateAsync(string id, Items updatedItem) =>
         await _itemsCollection.ReplaceOneAsync(x => x.Id == id, updatedItem);
 
     public async Task RemoveAsync(string id) =>

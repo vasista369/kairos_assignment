@@ -14,11 +14,11 @@ public class ItemsController : ControllerBase
         _itemsService = itemsService;
 
     [HttpGet]
-    public async Task<List<Item>> Get() =>
+    public async Task<List<Items>> Get() =>
         await _itemsService.GetAsync();
 
     [HttpGet("{id:length(24)}")]
-    public async Task<ActionResult<Item>> Get(string id)
+    public async Task<ActionResult<Items>> Get(string id)
     {
         var item = await _itemsService.GetAsync(id);
 
@@ -31,7 +31,7 @@ public class ItemsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(Item newItem)
+    public async Task<IActionResult> Post(Items newItem)
     {
         await _itemsService.CreateAsync(newItem);
 
@@ -39,7 +39,7 @@ public class ItemsController : ControllerBase
     }
 
     [HttpPut("{id:length(24)}")]
-    public async Task<IActionResult> Update(string id, Item updatedItem)
+    public async Task<IActionResult> Update(string id, Items updatedItem)
     {
         var item = await _itemsService.GetAsync(id);
 
