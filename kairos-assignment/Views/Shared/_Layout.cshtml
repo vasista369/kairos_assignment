@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - kairos_assignment</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="kairos_assignment.styles.css" />
+    @*<link rel="stylesheet" href="kairos_assignment.styles.css" />*@
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -80,13 +80,24 @@
     <script>
 
         // Function to add a new item to the list
-        let mockData = [{
-            id: 1,
-            name: 'GURU',
-            description: 'Kairos tec'
-        },
-            // Add more items here if needed
+        let mockData = [
         ];
+
+        function fetchData() {
+            var url = "https://localhost:7076/api/items";
+            fetch(url, {
+                method: "GET"
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log("GET request response:", result);
+                mockData = result
+                generateItemList(mockData);
+            })
+            .catch(error => {
+                console.log("GET request failed:", error);
+            });
+        }
 
         function generateItemList(data) {
             const itemList = document.getElementById('itemList');
@@ -95,7 +106,7 @@
                 const li = document.createElement('li');
                 li.innerHTML = `
                             <h2>${item.name}</h2>
-                            <p>${item.description}</p>
+                            <p>${item.company}</p>
                         `;
                 itemList.appendChild(li);
             });
@@ -114,18 +125,38 @@
             }
 
             const newItem = {
-                id: mockData.length + 1,
                 name: itemName,
-                description: itemDescription
+                Company: itemDescription
             };
+            var url = "https://localhost:7076/api/items";
 
+            console.log("newItem::", newItem)
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newItem)
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log("POST request successful:", result);
+            })
+            .catch(error => {
+                console.log("POST request failed:", error);
+            });
+
+
+            //console.log(JSON.stringify(newItem))
             mockData.push(newItem);
             generateItemList(mockData);
 
-            // Clear the form
+             //Clear the form
             itemNameInput.value = '';
             itemDescriptionInput.value = '';
         }
+
+        fetchData()
 
         // Get the form element and attach the addItem function to its submit event
         const addItemForm = document.getElementById('addItemForm');
