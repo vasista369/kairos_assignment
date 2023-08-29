@@ -1,0 +1,78 @@
+﻿
+pipeline {
+    agent any
+    environment {
+        dotnet = '/usr/local/share/dotnet/dotnet'
+        publishDirectory = "$WORKSPACE/kairos-assignment/bin/Release/netcoreapp3.1/publish" // Change the path based on your project structure
+    }
+    stages {
+        stage('Checkout Stage') {
+            steps {
+                script {
+                    git credentialsId: 'github-ssh', url: 'git@github.com:vasista369/kairos_assignment.git', branch: 'main'
+                }
+            }
+        }
+        stage('Build Stage') {
+            steps {
+                sh '''#!/bin/bash
+                    $dotnet restore
+                    $dotnet build --configuration Release
+                '''
+            }
+        }
+        stage('Test Stage') {
+            steps {
+                sh "$dotnet test $WORKSPACE/kairos-assignment/kairos-assignment.csproj"
+            }
+        }
+        stage("Release Stage") {
+            steps {
+                sh '''#!/bin/bash
+                    $dotnet build $WORKSPACE/kairos-assignment.sln /p:Configuration=Release
+                '''
+            }
+        }
+        stage("Deploy Stage") {
+            steps {
+                sh '''#!/bin/bash
+                    # Publish the application
+                    $dotnet publish $WORKSPACE/kairos-assignment/kairos-assignment.csproj --configuration Release --output $publishDirectory
+                '''
+            }
+        }
+        // stage("Run App") {
+        //     steps {
+        //         sh '''#!/bin/bash
+        //             echo $publishDirectory
+        //             echo "Going to publish directory"
+        //             cd $publishDirectory
+        //             echo $ls
+        //             // lsof -ti:5000 | xargs kill
+        //             echo "Trying to run the app"
+        //             $dotnet kairos-assignment.dll &
+        //         '''
+        //     }
+        // }
+    }
+    post {
+        success {
+            script {
+                echo "Build succeeded!"
+                sh '''#!/bin/bash
+                    echo "Starting background process"
+                    lsof -ti:5000 | xargs kill
+                    cd $publishDirectory
+                    $dotnet kairos-assignment.dll
+                '''
+            }
+        }
+
+        failure {
+            script {
+                echo "Build failed!"
+                // Additional failure-related steps can go here
+            }
+        }
+    }
+}

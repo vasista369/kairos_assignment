@@ -1,4 +1,4 @@
 ﻿<Properties StartupConfiguration="{D201BB19-D782-4F81-BE0F-8AD939CD51BD}|https">
-  <MonoDevelop.Ide.ItemProperties.kairos-assignment FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.kairos-assignment PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
 </Properties>
