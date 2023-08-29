@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Jenkins", "Jenkins", "{35E21D34-AE2E-4360-809D-8EA8B72F8139}"
 	ProjectSection(SolutionItems) = preProject
 		build-pipeline.txt = build-pipeline.txt
+		stop-assignment-pipeline.txt = stop-assignment-pipeline.txt
 	EndProjectSection
 EndProject
 Global
