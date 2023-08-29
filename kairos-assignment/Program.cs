@@ -1,10 +1,17 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using kairos_assignment.Data;
+using ItemsApi.Models;
+using ItemsApi.Services;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.Configure<ItemStoreDatabaseSettings>(
+    builder.Configuration.GetSection("ItemStoreDatabase"));
+builder.Services.AddSingleton<ItemsService>();
+
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
