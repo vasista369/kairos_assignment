@@ -11,14 +11,17 @@ public class ItemsService
     public ItemsService(
         IOptions<ItemStoreDatabaseSettings> itemsDatabaseSettings = null)
     {
-        var mongoClient = new MongoClient(
+        if (itemsDatabaseSettings != null)
+        {
+            var mongoClient = new MongoClient(
             itemsDatabaseSettings.Value.ConnectionString);
 
-        var mongoDatabase = mongoClient.GetDatabase(
-            itemsDatabaseSettings.Value.DatabaseName);
+            var mongoDatabase = mongoClient.GetDatabase(
+                itemsDatabaseSettings.Value.DatabaseName);
 
-        _itemsCollection = mongoDatabase.GetCollection<Items>(
-            itemsDatabaseSettings.Value.ItemsCollectionName);
+            _itemsCollection = mongoDatabase.GetCollection<Items>(
+                itemsDatabaseSettings.Value.ItemsCollectionName);
+        }
     }
 
     public async Task<List<Items>> GetAsync() =>

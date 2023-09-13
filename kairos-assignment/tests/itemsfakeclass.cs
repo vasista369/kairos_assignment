@@ -31,16 +31,23 @@ public class ItemServiceFake : ItemsService
         }
     };
 
-    public IEnumerable<Items> GetAllItems()
+    public List<Items> GetAll()
     {
         return _items;
     }
 
-    public Items Add(Items newItem)
+    //public Items CreateAsync(Items newItem)
+    //{
+    //    newItem.Id = RandomString(36);
+    //    _items.Add(newItem);
+    //    return newItem;
+    //}
+
+    public async Task CreateAsync(Items newItem)
     {
         newItem.Id = RandomString(36);
         _items.Add(newItem);
-        return newItem;
+        //await newItem;
     }
 
     private static Random random = new Random();
