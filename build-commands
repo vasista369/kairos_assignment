@@ -1,0 +1,13 @@
+dotnet restore
+dotnet build --configuration Release
+dotnet test kairos-assignment.csproj
+
+
+
+
+
+=====ssh setup
+
+
+open ~/.ssh/config
+pbcopy < ~/.ssh/id_ed25519_guru.pub
