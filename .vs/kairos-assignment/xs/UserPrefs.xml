@@ -1,4 +1,41 @@
 ﻿<Properties StartupConfiguration="{D201BB19-D782-4F81-BE0F-8AD939CD51BD}|https">
-  <MonoDevelop.Ide.ItemProperties.kairos-assignment PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint enabled="false" file="/Users/akhilmannuru/Projects/Guru/kairos-assignment/kairos-assignment/Program.cs" relfile="kairos-assignment/Program.cs" line="8" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="kairos-assignment/Models/itemClass.cs">
+    <Files>
+      <File FileName="kairos-assignment/Models/itemClass.cs" Line="6" Column="14" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="kairos-assignment">
+            <Node name="kairos-assignment">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="item.cs" selected="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name="services" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.kairos-assignment PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

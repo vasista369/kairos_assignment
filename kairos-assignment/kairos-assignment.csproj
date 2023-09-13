@@ -12,6 +12,7 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
     <None Remove="services\" />
+    <None Remove="tests\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -26,9 +27,11 @@
     <PackageReference Include="PowerDeploy.PackageManagerExtension" Version="0.6.2" />
     <PackageReference Include="PackageManager-Drop-Db" Version="1.1.1" />
     <PackageReference Include="MongoDB.Driver" Version="2.21.0" />
+    <PackageReference Include="xunit" Version="2.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="services\" />
+    <Folder Include="tests\" />
   </ItemGroup>
 </Project>
