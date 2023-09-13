@@ -9,7 +9,7 @@ public class ItemsService
     private readonly IMongoCollection<Items> _itemsCollection;
 
     public ItemsService(
-        IOptions<ItemStoreDatabaseSettings> itemsDatabaseSettings)
+        IOptions<ItemStoreDatabaseSettings> itemsDatabaseSettings = null)
     {
         var mongoClient = new MongoClient(
             itemsDatabaseSettings.Value.ConnectionString);
