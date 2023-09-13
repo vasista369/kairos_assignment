@@ -1,20 +1,34 @@
 ﻿using ItemsApi.Controllers;
+using ItemsApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 
-//[Fact]
-public void Add_InvalidObjectPassed_ReturnsBadRequest()
+
+public class ShoppingCartControllerTest
 {
-    // Arrangeß
-    var nameMissingItem = new Item()
+
+    private readonly ItemsController _controller;
+    private readonly ItemsService _service;
+    public ShoppingCartControllerTest()
     {
-        name = "onePlus  ",
-        company = "onePlus 9r"
-    };
-    ItemsController.ModelState.AddModelError("Name", "Required");
-    // Act
-    var badResponse = ItemsController.Post(nameMissingItem);
-    // Assert
-    Assert.IsType<BadRequestObjectResult>(badResponse);
+        _service = new ItemCartServiceFake();
+        _controller = new ItemsController(_service);
+    }
+
+    [Fact]
+    public void Add_InvalidObjectPassed_ReturnsBadRequest()
+    {
+        // Arrange
+        var nameMissingItem = new Item()
+        {
+            name = "onePlus  ",
+            company = "onePlus 9r"
+        };
+        _controller.ModelState.AddModelError("Name", "Required");
+        // Act
+        var badResponse = _controller.Post(nameMissingItem);
+        // Assert
+        Assert.IsType<BadRequestObjectResult>(badResponse);
+    }
 }
 
