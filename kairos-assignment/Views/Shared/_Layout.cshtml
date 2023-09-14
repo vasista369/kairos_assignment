@@ -6,93 +6,13 @@
     <title>@ViewData["Title"] - kairos_assignment</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" />
     @*<link rel="stylesheet" href="kairos_assignment.styles.css" />*@
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, #bdc3c7, #3498db);
-        }
 
-        .container {
-            max-width: 100vw;   
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .container_B {
-            /* max-width: 100vw;
-            margin: 0 auto; */
-            padding: 2rem;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        input {
-            width: 35%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border: 3px solid #ccc;
-            -webkit-transition: 0.5s;
-            transition: 0.5s;
-            outline: none;
-        }
-        .list_style {
-            color: white;
-            list-style-type: decimal;
-            display: flex;
-            /*            justify-content: center;*/
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-        li {
-            display: flex;
-/*            justify-content: center;*/
-            justify-content: space-evenly;
-            flex-direction: row;
-        }
-
-        input {
-            border: 3px solid #555;
-            /*background-color: #0056b3;*/
-        }
-        .button {
-            background: #3498db;
-            height:15%;
-            width:10%;
-            color: #ffffff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0px 3px 0px #2980b9;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            margin-top: 12px;
-        }
-
-            .button:hover {
-                transform: translateY(3px);
-                box-shadow: 0px 0px 0px #2980b9;
-            }
-        img {
-            height: 80px;
-            width: 200px;
-            margin-left: 8%;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
     <div>
-        <img src="https://klabs.kairostech.com/wp-content/themes/Kairos/assets/images/kairos-logo-dark.png"/>
+        <img src="https://klabs.kairostech.com/wp-content/themes/Kairos/assets/images/kairos-logo-dark.png" />
     </div>
     <div class="container">
         <main role="main" class="pb-3">
@@ -117,93 +37,12 @@
         </ul>
 
     </div>
-    <script>// Function to add a new item to the list
-        let mockData = [
-        ];
-        var url = "http://localhost:5000/api/items";
-        function fetchData() {
-
-            fetch(url, {
-                method: "GET"
-            })
-                .then(response => response.json())
-                .then(result => {
-                    console.log("GET request response:", result);
-                    mockData = result
-                    generateItemList(mockData);
-                })
-                .catch(error => {
-                    console.log("GET request failed:", error);
-                });
-        }
-
-        function generateItemList(data) {
-            const itemList = document.getElementById('itemList');
-            itemList.innerHTML = ''; // Clear the list first
-            data.forEach(item => {
-                const li = document.createElement('li');
-                li.innerHTML = `
-                                <h2 style="margin-left: 80px;">${item.name}</h2>
-                                <h2 style="margin-left: 415px;">${item.company}</h2>
-                            `;
-                itemList.appendChild(li);
-            });
-        }
-
-        function addItem() {
-            const itemNameInput = document.getElementById('itemName');
-            const itemDescriptionInput = document.getElementById('itemDescription');
-
-            const itemName = itemNameInput.value.trim();
-            const itemDescription = itemDescriptionInput.value.trim();
-
-            //if (itemName === '' || itemDescription === '') {
-            //    alert('Please fill out all fields.ddjjjjjnwdkjcsnkkjnjj');
-            //    return;
-            //}
-
-            const newItem = {
-                name: itemName,
-                Company: itemDescription
-            };
-            console.log("newItem::", newItem)
-            fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newItem)
-            })
-                .then(response => response.json())
-                .then(result => {
-                    console.log("POST request successful:", result);
-                })
-                .catch(error => {
-                    console.log("POST request failed:", error);
-                });
-
-
-            //console.log(JSON.stringify(newItem))
-            mockData.push(newItem);
-            generateItemList(mockData);
-
-            //Clear the form
-            itemNameInput.value = '';
-            itemDescriptionInput.value = '';
-        }
-
-        fetchData()
-
-        // Get the form element and attach the addItem function to its submit event
-        const addItemForm = document.getElementById('addItemForm');
-        addItemForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            addItem();
-        });</script>
+    <script>// Function to add a new item to the list</script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/layout.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>

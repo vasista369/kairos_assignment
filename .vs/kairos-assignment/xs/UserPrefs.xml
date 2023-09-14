@@ -1,37 +1,24 @@
-﻿<Properties StartupConfiguration="{D201BB19-D782-4F81-BE0F-8AD939CD51BD}|https">
+﻿<Properties StartupConfiguration="{CF8830CD-5162-475B-B783-2FAD58642C16}|https">
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint enabled="false" file="/Users/akhilmannuru/Projects/Guru/kairos-assignment/kairos-assignment/Program.cs" relfile="kairos-assignment/Program.cs" line="8" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="kairos-assignment/Models/itemClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="kairos-assignment/tests/itemsControllerTest.cs">
     <Files>
-      <File FileName="kairos-assignment/Models/itemClass.cs" Line="6" Column="14" />
+      <File FileName="kairos-assignment/kairos-assignment.csproj" Line="31" Column="68" />
+      <File FileName="kairos-assignment/tests/itemsControllerTest.cs" Line="36" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="kairos-assignment">
-            <Node name="kairos-assignment">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="item.cs" selected="True" />
-              </Node>
-              <Node name="Properties" expanded="True" />
-              <Node name="services" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="appsettings.json" expanded="True" />
-            </Node>
-          </Node>
-        </State>
+        <State name="__root__" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State />
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="kairos-assignment" selected="True" />
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
