@@ -16,18 +16,18 @@ public class ItemServiceFake : ItemsService
     {
         new Items() {
             Id = new string("ab2bd817-98cd-4cf3-a80a-53ea0cd9c200"),
-            name = "Orange Juice",
-            company="Orange Tree"
+            name = "onePlus",
+            company="onePlus 9r"
         },
         new Items() {
             Id = new string("815accac-fd5b-478a-a9d6-f171a2f6ae7f"),
-            name = "Diary Milk",
-            company="Cow"
+            name = "onePlus",
+            company="onePlus 11r"
         },
         new Items() {
             Id = new string("33704c4a-5b87-464c-bfb6-51971b4d18ad"),
-            name = "Frozen Pizza",
-            company="Uncle Mickey"
+            name = "Apple",
+            company="Iphone 15pro"
         }
     };
 
